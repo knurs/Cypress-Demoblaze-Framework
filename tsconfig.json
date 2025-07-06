@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "types": ["cypress"],
+    "lib": ["es6", "dom"],
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "module": "commonjs",
+    "inlineSourceMap": true,
+    "declaration": false,
+    "noImplicitAny": false,
+    "sourceMap": false,
+    "strict": true,
+    "removeComments": true,
+  },
+  "include": ["cypress/**/*.ts"]
+}

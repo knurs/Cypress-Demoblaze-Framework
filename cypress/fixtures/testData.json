@@ -1,0 +1,28 @@
+{
+  "validUser": {
+    "username": "testuser123",
+    "password": "testpass123"
+  },
+  "invalidUser": {
+    "username": "invaliduser",
+    "password": "wrongpassword"
+  },
+
+
+
+
+  "products": [
+    {
+      "id": 1,
+      "name": "Samsung galaxy s6",
+      "category": "phone",
+      "price": 360
+    },
+    {
+      "id": 2,
+      "name": "HTC One M9",
+      "category": "phone", 
+      "price": 700
+    }
+  ]
+}
