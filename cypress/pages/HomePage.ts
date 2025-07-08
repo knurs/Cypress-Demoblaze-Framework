@@ -36,6 +36,16 @@ export class HomePage extends BasePage {
   clickProduct(productName: string): void {
     cy.get(this.selectors.productTitles).contains(productName).click();
   }
+
+  clickFirstAvailableProduct(): void {
+    // Wait for products to load
+    cy.get(this.selectors.productCards).should('have.length.greaterThan', 0);
+    
+    // Click on the first product link (not just the title)
+    cy.get(this.selectors.productCards).first().within(() => {
+      cy.get(this.selectors.productLink).should('be.visible').click();
+    });
+  }
   
   clickAddToCart(): void {
     cy.get(this.selectors.addToCartButton).click();

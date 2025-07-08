@@ -1,6 +1,9 @@
 import { Given, Then, When } from "@badeball/cypress-cucumber-preprocessor";
 import { HomePage } from "../../../pages/HomePage";   
+import { ProductPage } from "../../../pages/ProductPage";   
+
 const homePage = new HomePage();
+const productPage = new ProductPage();
 
 Given('User is on the homepage', () => {
   homePage.visit();
@@ -24,11 +27,18 @@ When('User views the product listings', () => {
 });
 
 When('User clicks on a product', () => {
-  // Click on the first available product
-  cy.get('.card-title').first().click();
-  cy.wait(1000);
+  // Click on the first available product using the correct selector
+  homePage.clickFirstAvailableProduct();
+  
+  // Wait for navigation to product page
+  productPage.waitForProductPageLoad();
 });
 
 When('User clicks "Add to cart" button', () => {
-  homePage.clickAddToCart();
+  // Set up alert stub before clicking add to cart
+  cy.window().then((win) => {
+    cy.stub(win, 'alert').as('windowAlert');
+  });
+  
+  productPage.clickAddToCart();
 });
