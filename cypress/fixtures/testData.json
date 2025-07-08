@@ -23,6 +23,18 @@
       "name": "HTC One M9",
       "category": "phone", 
       "price": 700
+    },
+    {
+      "id": 3,
+      "name": "Nokia lumia 1520",
+      "category": "phone",
+      "price": 820
+    },
+    {
+      "id": 4,
+      "name": "Nexus 6",
+      "category": "phone",
+      "price": 650
     }
   ]
 }

@@ -34,7 +34,21 @@ export class HomePage extends BasePage {
   }
   
   clickProduct(productName: string): void {
-    cy.get(this.selectors.productTitles).contains(productName).click();
+    // First wait for products to be loaded
+    cy.get(this.selectors.productCards).should('have.length.greaterThan', 0);
+    
+    // Find the product card that contains the specified product name
+    cy.get(this.selectors.productCards).contains(this.selectors.productTitles, productName)
+      .should('exist', `Product "${productName}" should be visible on the page`)
+      .within(() => {
+        // Within the product card, click on the product link (not just the title)
+        cy.get(this.selectors.productLink).should('be.visible').click();
+      });
+    
+    // Wait a moment for navigation and verify we navigated to product detail page
+    cy.wait(1000);
+    // Verify we're on a product detail page by checking for Add to cart button
+    cy.get(this.selectors.addToCartButton).should('be.visible');
   }
   
   clickAddToCart(): void {

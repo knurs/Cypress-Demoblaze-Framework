@@ -23,10 +23,22 @@ When('User views the product listings', () => {
   cy.wait(2000); // Wait for products to load
 });
 
-When('User clicks on a product', () => {
-  // Click on the first available product
-  cy.get('.card-title').first().click();
-  cy.wait(1000);
+When('User clicks on {string} product', (productName: string) => {
+  // Wait for products to load properly
+  cy.get('.card').should('have.length.greaterThan', 0);
+  cy.wait(2000); // Wait for products to fully load
+  
+  // Use the HomePage method to click on the specified product
+  homePage.clickProduct(productName);
+});
+
+When('User clicks on product {string}', (productName: string) => {
+  // Wait for products to load properly
+  cy.get('.card').should('have.length.greaterThan', 0);
+  cy.wait(2000); // Wait for products to fully load
+  
+  // Use the HomePage method to click on the specified product
+  homePage.clickProduct(productName);
 });
 
 When('User clicks "Add to cart" button', () => {
