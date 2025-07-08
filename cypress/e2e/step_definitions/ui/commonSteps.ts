@@ -30,5 +30,10 @@ When('User clicks on a product', () => {
 });
 
 When('User clicks "Add to cart" button', () => {
+  // Set up the alert stub before clicking the button that triggers the alert
+  cy.window().then((win) => {
+    cy.stub(win, 'alert').as('windowAlert');
+  });
+  
   homePage.clickAddToCart();
 });
