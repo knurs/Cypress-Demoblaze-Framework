@@ -14,6 +14,18 @@ export default defineConfig({
       await addCucumberPreprocessorPlugin(on, config); // ✅ no stepDefinitions here
       on('file:preprocessor', createBundler({ plugins: [createEsbuildPlugin(config)] }));
       mochawesome(on);
+      
+      // Configure browser launch arguments to disable password manager popups
+      on('before:browser:launch', (browser, launchOptions) => {
+        if (browser.name === 'chrome') {
+          launchOptions.args.push('--disable-password-generation');
+          launchOptions.args.push('--disable-password-manager-reauthentication');
+          launchOptions.args.push('--disable-save-password-bubble');
+          launchOptions.args.push('--disable-features=VizDisplayCompositor');
+        }
+        return launchOptions;
+      });
+      
       return config;
     },
     reporter: 'cypress-mochawesome-reporter',
