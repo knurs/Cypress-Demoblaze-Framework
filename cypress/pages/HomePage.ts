@@ -6,8 +6,8 @@ export class HomePage extends BasePage {
     categoryItems: '.list-group-item',
     productCards: '.card',
     productTitles: '.card-title',
-    productPrices: '.card-text',
-    addToCartButton: '.btn-success',
+    productPrices: '.card-block',
+    addToCartButton: '.btn.btn-success.btn-lg',
     loginLink: '#login2',
     cartLink: '#cartur',
     productLink: '.hrefch'
@@ -34,11 +34,11 @@ export class HomePage extends BasePage {
   }
   
   clickProduct(productName: string): void {
-    cy.get(this.selectors.productTitles).contains(productName).click();
+    cy.get(this.selectors.productTitles , { timeout: 10000 }).contains(productName).click();
   }
   
   clickAddToCart(): void {
-    cy.get(this.selectors.addToCartButton).click();
+    cy.get(this.selectors.addToCartButton , { timeout: 10000 }).should('be.visible').click();
   }
   
   clickLogin(): void {

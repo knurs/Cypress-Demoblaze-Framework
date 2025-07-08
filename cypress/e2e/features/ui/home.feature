@@ -3,8 +3,8 @@ Feature: Homepage categories
   Scenario: Display correct categories
     Given User is on the homepage
     Then User should see exactly 3 categories
-    When User views the categories
-    Then Categories displayed should be "Phones", "Notebooks", "Monitors":
+    When User views the categories menu
+    Then Categories displayed should be "Phones", "Laptops", and "Monitors"
      
 
 Scenario: Verify all products show price tags

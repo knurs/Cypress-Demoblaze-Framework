@@ -15,6 +15,7 @@ declare global {
     interface Chainable {
       loginViaUI(username: string, password: string): Chainable<void>;
       loginViaAPI(username: string, password: string): Chainable<any>;
+       handleChromePasswordPopup(): Chainable<void>;
     }
   }
 }

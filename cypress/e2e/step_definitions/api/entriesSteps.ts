@@ -3,7 +3,11 @@ import { When, Then } from "@badeball/cypress-cucumber-preprocessor";
 let response: any;
 
 When("User sends GET request to {string}", (endpoint: string) => {
-  cy.request(endpoint).then((res) => {
+  cy.request({
+    method: 'GET',
+    url: `https://api.demoblaze.com${endpoint}`,
+    failOnStatusCode: false
+  }).then((res) => {
     response = res;
   });
 });

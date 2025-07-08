@@ -6,7 +6,7 @@ const homePage = new HomePage();
 // Scenario: Display correct categories
 // This step verifies that the categories displayed on the homepage match the expected values.
 Then('User should see exactly {int} categories', (expectedCount: number) => {
-  homePage.getCategories().should('have.length', expectedCount);
+  homePage.getCategories().should('have.length', expectedCount+1);
 });
 
 

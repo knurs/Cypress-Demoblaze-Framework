@@ -11,9 +11,10 @@ export default defineConfig({
     supportFile: 'cypress/support/e2e.ts',
     setupNodeEvents: async (on, config) => {
       console.log('>>> Step definition pattern from cucumber config is being used');
-      await addCucumberPreprocessorPlugin(on, config); // ✅ no stepDefinitions here
+      await addCucumberPreprocessorPlugin(on, config); 
       on('file:preprocessor', createBundler({ plugins: [createEsbuildPlugin(config)] }));
       mochawesome(on);
+  
       return config;
     },
     reporter: 'cypress-mochawesome-reporter',
